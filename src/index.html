@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html ng-app="carouselApp">
+    <head>
+        <meta charset="utf-8">
+        <title>angular carousel demo</title>
+
+        <style>
+            .carousels {
+                display: flex;
+                width: 100%;
+                position: relative;
+                justify-content: center;
+                align-items: center;
+            }
+            .carousel {
+                display: flex;
+                margin: auto;
+                max-height: 700px;
+                overflow: hidden;
+                box-shadow: 0 0 20px #999;
+            }
+            .carousel img {
+                margin: auto;
+            }
+            .arrow {
+                display: flex;
+                position: absolute;
+                margin: auto;
+                left: 0;
+                right: 0;
+                justify-content: space-between;
+            }
+
+
+        </style>
+
+    </head>
+    <body ng-controller="MainController">
+        <h1 style="display: flex;justify-content: center;">Carousel Using AngularJS</h1>
+        <div>
+            <angular-carousel-directive images="images"></angular-carousel-directive>
+        </div>
+
+        <script type="text/ng-template" id="carousel.html">
+            <div class="carousels">
+                <div class="carousel" ng-repeat="image in images" ng-show="image.visiable">
+                    <img ng-src="{{image.src}}" alt="{{image.title}}"/>
+                </div>
+                <div class="arrow">
+                    <a href="#" class="left_arrow" ng-click="prev()">
+                      &#60;&#60;Prev
+                    </a>
+                    <a href="#" class="right_arrow" ng-click="next()">
+                      &#62;&#62;Next
+                    </a>
+                </div>
+            </div>
+        </script>
+
+        <script src="http://cdn.bootcss.com/angular.js/1.5.5/angular.min.js"></script>
+        <script src="http://cdn.bootcss.com/angular.js/1.5.5/angular-animate.min.js"></script>
+        <script src="./main.js" charset="utf-8"></script>
+
+    </body>
+</html>
