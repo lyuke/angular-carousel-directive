@@ -1,33 +1,6 @@
-var app = angular.module("carouselApp",['ngAnimate']);
-
-app.directive('angularCarouselDirective',function($timeout){
-  return {
-    restrict:'AE',
-    replace: true,
-    scope:{
-        images:'='
-    },
-    link:function(scope,elem,attr){
-      scope.currentIndex =0;
-      scope.next = function() {
-        scope.currentIndex < scope.images.length - 1 ? scope.currentIndex++ : scope.currentIndex = 0;
-      };
-      scope.prev = function() {
-        scope.currentIndex > 0 ? scope.currentIndex-- : scope.currentIndex = scope.images.length - 1;
-      };
-      scope.$watch("currentIndex",function(){
-        scope.images.forEach(function(image){
-          image.visiable=false;
-        });
-        scope.images[scope.currentIndex].visiable=true;
-      })
-    },
-    templateUrl:'carousel.html'
-
-  };
+var app = angular.module("carouselApp",['ngAnimate','k-angularCarousel']);
 
 
-});
 app.controller('MainController',function($scope){
 
     $scope.images=[
